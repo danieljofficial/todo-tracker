@@ -1,0 +1,485 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+/* MOBILE DESIGN */
+
+/* Default, dark mode */
+body:has(#dark) {
+  background-color: hsl(235, 21%, 11%);
+}
+
+.navbar {
+  background-image: url(./assets/bg-mobile-dark.jpg);
+  background-size: cover;
+  
+  color: hsl(0, 0%, 98%);
+  padding: 6rem .5rem;
+}
+
+.navbar section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.auth {
+  /* font-weight: bolder; */
+  text-decoration: none;
+  /* border: 1px solid red; */
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* gap: 2rem; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* padding: 1rem; */
+}
+
+.auth a, .auth div button {
+  border: unset;
+  text-decoration: none;
+  color: hsl(0, 0%, 98%);
+  transition: all .25s ease-in-out;
+  /* border: 1px solid hsl(235, 21%, 11%); */
+  padding: .5rem 1rem;
+  border-radius: 16px; 
+  background-color: hsl(235, 21%, 11%);
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.loggedIn {
+  padding: 1rem;
+}
+
+.loggedIn span {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.loggedOut {
+  /* border: 1px solid yellow; */
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.auth a:hover {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(235, 21%, 11%);
+}
+
+.todo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 1rem;
+}
+
+.todo a{
+  color: hsl(0, 0%, 98%);
+  text-decoration: none;
+}
+
+.toggleTheme {
+  all: unset;
+}
+
+form {
+  /* border: 1px solid red; */
+  position: relative;
+  /* top: 50%; */
+  display: flex;
+  justify-content: center;
+}
+
+.formContent {
+  position: absolute;
+  padding: 0 1rem;
+  margin: 1rem;
+  /* border: 1px solid yellow; */
+  top: -4rem;
+  /* background-color: hsl(235, 24%, 19%); */
+  border-radius: 18px;
+  color: hsl(0, 0%, 98%);
+  min-width: 16rem;
+  max-width: 28rem;
+  background: transparent;
+  /* border: 2px solid hsl(0, 0%, 98%); */
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.formContent .formHeader {
+  /* border: 1px solid red; */
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.formContent div {
+  /* border: 1px solid red; */
+  height: 40px;
+  margin: 1rem 0;
+  /* display: flex;
+  align-items: center; */
+  position: relative;
+} 
+
+.formContent input {
+  /* all: unset; */
+  border: 2px solid hsl(0, 0%, 98%);
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 1rem;
+  height: 1.9rem;
+  border-radius: 40px;
+  background-color: hsl(235, 21%, 11%);
+  text-indent: 12px;
+  height: 100%;
+  color: hsl(0, 0%, 98%);
+}
+
+.formContent input::placeholder {
+  color: hsl(233, 14%, 35%);
+}
+
+.formContent i {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.formContent button {
+  /* all: unset; */
+  outline: none;
+  border: none;
+  background-color: hsl(0, 0%, 98%);
+  border-radius: 40px;
+  padding: .5rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  /* text-align: center; */
+  height: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  font-size: 1rem;
+  /* color: hsl(0, 0%, 98%); */
+  color: hsl(235, 21%, 11%);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContent div a {
+  text-decoration: none;
+  color: hsl(0, 0%, 98%);
+}
+
+.formContent div a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.formContent .formFooter {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+div.error {
+  /* padding: 10px; */
+  /* background: #ffefef; */
+  border: 1px solid red;
+  color: var(--error);
+  border-radius: 4px;
+  /* margin: 20px 0; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input.error {
+  border: 1px solid red;
+}
+
+/* .listContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: none;
+  width: max-content;
+  max-height: 50vh;
+  font-size: 1.3rem;
+} */
+
+.listContainer {
+  position: relative;
+  /* left: 50%; */
+  top: 50%;
+  /* transform: translate(-50%, -50%); */
+  max-width: none;
+  /* width: 100%; */
+  /* max-height: 50vh; */
+  font-size: 1.3rem;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 1rem; */
+}
+
+.list {
+  margin: 0 1rem;
+  position: absolute;
+  top: -4rem;
+  /* border: 1px solid red; */
+  padding: 1rem 0;
+}
+
+.createTodo, .sortTasks {
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  border: 1px solid transparent;
+  padding: 1rem;  
+  border-radius: 12px;
+}
+
+.createTodo label {
+  border: 1px solid hsl(220, 98%, 61%);
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+label .addTaskButton {
+  all: unset;
+  background-color: transparent;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+.createTodo label:active {
+  border-color: blue;
+}
+
+#addTask {
+  all: unset;
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+svg {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  /* border-radius: 50%; */
+  /* background-color: white; */
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+svg circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-width: 2.5;
+  stroke: hsl(235, 21%, 11%);
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0%,100% {
+    stroke-dashoffset: 440;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  50.1% {
+    stroke-dashoffset: 880;
+  }
+}
+
+.taskList {
+  background-color: hsl(235, 24%, 19%);
+  padding: 0;
+  border-radius: 12px;
+}
+
+ul label {
+  color: hsl(236, 33%, 92%);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  border-bottom: 1px solid hsl(233, 14%, 35%);
+  padding: .75rem;
+  touch-action: none;
+}
+
+.taskText:hover {
+  cursor: pointer;
+}
+
+.deleteButton {
+  all: unset;
+}
+
+.underBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: hsl(233, 14%, 35%);
+  font-weight: 700;
+  gap: 2rem;
+  border-radius: 12px;
+}
+
+.clear {
+  all: unset;
+}
+
+input[type = "checkbox"] {
+  height: 1.65rem;
+  width: 1.65rem;
+  min-width: 1.65rem;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  border: 1px solid hsl(233, 14%, 35%);
+  outline: none;
+}
+
+label input:checked {
+  content: url(./assets/icon-check.svg);
+  background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: 1px solid transparent;
+}
+
+label input + div {
+  margin-right: auto;
+}
+
+label input:checked + div {
+  text-decoration: line-through;
+  color: hsl(233, 14%, 35%);
+}
+
+.sortTasks {
+  justify-content: space-between;
+}
+
+.sortTasks button{
+  all: unset;
+  color: hsl(233, 14%, 35%);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.all:focus, .active:focus, .completed:focus {
+  color: hsl(220, 98%, 61%);
+}
+
+.orderRemind {
+  color: hsl(233, 14%, 35%);
+  margin-top: 2rem;
+  /* margin-bottom: 20rem; */
+  text-align: center;
+  font-weight: 700;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* Light mode */
+
+body:has(#light) {
+  background-color: hsl(236, 33%, 92%);
+}
+
+#light .navbar {
+  color: black;
+}
+
+#light .createTodo {
+  background-color: hsl(0, 0%, 98%);
+}
+
+#light .taskList {
+  background-color: hsl(0, 0%, 98%);
+}
+
+#light ul label {
+  color: hsl(235, 19%, 35%);
+}
+
+#light .underBar {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(236, 9%, 61%);
+}
+
+#light .sortTasks {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(235, 19%, 35%);
+}
+
+#light .navbar {
+  background-image: url(./assets/bg-mobile-light.jpg);
+}
+
+/* Desktop Design */
+
+@media (min-width: 500px) {
+  .navbar {
+    background-image: url(./assets/bg-desktop-dark.jpg);
+  }
+}
+
+@media (min-width: 1000px) {
+
+  /* Dark mode */
+  .navbar {
+    padding: 5rem 26rem;
+  }
+
+  .listContainer {
+    max-height: 20vh;
+  }
+
+  /* Light mode */
+  #light .navbar {
+    background-image: url(./assets/bg-desktop-light.jpg);
+  }
+}
