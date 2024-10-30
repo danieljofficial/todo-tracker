@@ -50,10 +50,7 @@ const Task = ({ onTaskChecked, index, task, id}) => {
         })
 
         const json = await response.json()
-        // console.log(json)
-
         if (response.ok) {
-            // console.log(typeof json)
             dispatch({type: 'UPDATE_TASK', payload: json})
             setIsLoading(false)
         }
@@ -62,7 +59,7 @@ const Task = ({ onTaskChecked, index, task, id}) => {
 
     return (
             <label htmlFor={`Item${index + 1}`}  ref={setNodeRef} style={style} className="taskElement">  
-                <input disabled={isLoading} onChange={updateTask} onClick={e => console.log(e.target.checked)} type="checkbox" name="" id={`Item${index + 1}`} className="taskInput" checked={task.isCompleted}/>                   
+                <input disabled={isLoading} onChange={updateTask} type="checkbox" name="" id={`Item${index + 1}`} className="taskInput" checked={task.isCompleted}/>                   
                 <div {...attributes} {...listeners} className="taskText" >{task.taskText}</div>
                 <button disabled={isLoading} className="deleteButton" onClick={removeTask} >
                     <img src="../src/assets/icon-cross.svg" alt="" id="cross"/> 

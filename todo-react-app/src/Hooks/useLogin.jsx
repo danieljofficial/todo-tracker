@@ -17,7 +17,6 @@ export const useLogin = () => {
         })
 
         const json = await response.json()
-        console.log('The json is', json)
 
         if (!response.ok) {
             setError(json.error)
@@ -29,6 +28,10 @@ export const useLogin = () => {
             dispatch({type: 'LOGIN', payload: json})
             setIsLoading(false)
         }
+
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 30000);
         
     }
 

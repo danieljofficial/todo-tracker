@@ -28,10 +28,8 @@ function List() {
                         'Authorization': `Bearer ${user.token}`
                     }
                 })
-                // console.log(response)
     
                 const json = await response.json() 
-                console.log(json)
     
                 if (response.json) {
                     dispatch({type: 'GET_ACTIVE_TASKS', payload: json})
@@ -51,10 +49,8 @@ function List() {
                         'Authorization': `Bearer ${user.token}`
                     }
                 })
-                // console.log(response)
     
                 const json = await response.json() 
-                console.log(json)
     
                 if (response.json) {
                     dispatch({type: 'GET_COMPLETED_TASKS', payload: json})
@@ -73,10 +69,8 @@ function List() {
                     'Authorization': `Bearer ${user.token}`
                 }
             })
-            // console.log(response)
 
             const json = await response.json() 
-            // console.log(json)
 
             if (response.json) {
                 dispatch({type: 'SET_TASKS', payload: json})
@@ -89,8 +83,6 @@ function List() {
 
     }, [filter, user])
 
-    // console.log( typeof tasks)
-    // console.log(tasks)
 
     const [taskText, setTaskText] = useState()
     const [isLoading, setIsLoading] = useState(null)
@@ -117,7 +109,6 @@ function List() {
 
         if (response.ok) {
             setTaskText('')
-            console.log('new task added', json)
             dispatch({type: 'CREATE_TASK', payload: json})
             setIsLoading(false)
         }
@@ -145,7 +136,6 @@ function List() {
             active: false,
             completed: true,
         })
-        console.log(filter)
     }
 
     const handleActiveTasks = () => {       
@@ -155,7 +145,6 @@ function List() {
             completed: false,
         })
 
-        console.log(filter)
     }
 
     const handleAllTasks = () => {
@@ -164,15 +153,11 @@ function List() {
             active: false,
             completed: false,
         })
-        console.log(filter)
     }
 
     const handleDragEnd = (event) => {
         const {active, over} = event
-        console.log('active: ' + active.id)
-        console.log('over: ' + over.id)
         
-        console.log(tasks)
         if (active.id === over.id) {
             dispatch({type: 'DND', payload: tasks})
             return
@@ -182,27 +167,12 @@ function List() {
 
         const activeIndex = tasks.findIndex(task => task._id === active.id)
         const overIndex = tasks.findIndex(task => task._id === over.id)
-        console.log(activeIndex)
-        console.log(overIndex)
 
         movedArray = arrayMove(tasks, activeIndex, overIndex)
         
         dispatch({type: "DND", payload: movedArray})
 
-        // console.log('active: ' + active.id)
-        // console.log('over: ' + over.id)
-        // let movedArray;
-        // if(active.id !== over.id) {
-        //     let activeIndex = tasks.indexOf(active.id)
-        //     let overIndex = tasks.indexOf(over.id)
-
-        //     movedArray = arrayMove(tasks, activeIndex, overIndex)
-        //     console.log(movedArray)
-        //     dispatch({type: 'DND', payload: movedArray})
-        // }
-        
- 
-        // dispatch({type: 'DND', payload: movedArray})
+    
     }
 
     const sensors = useSensors(
@@ -245,12 +215,10 @@ function List() {
                             <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
                             {tasks && tasks.map((task, index) => 
                                     <Task 
-                                        // onTaskChecked={onTaskChecked}
                                         index={index}
                                         key={task._id}
                                         task={task}
                                         id={task._id}
-                                        // id={filteredTasks[index].id}
                                     />
                             )}
                             </SortableContext>    

@@ -30,16 +30,11 @@ body:has(#dark) {
 }
 
 .auth {
-  /* font-weight: bolder; */
   text-decoration: none;
-  /* border: 1px solid red; */
   display: flex;
-  /* justify-content: space-evenly; */
-  /* gap: 2rem; */
   position: absolute;
   top: 0;
   left: 0;
-  /* padding: 1rem; */
 }
 
 .auth a, .auth div button {
@@ -47,7 +42,6 @@ body:has(#dark) {
   text-decoration: none;
   color: hsl(0, 0%, 98%);
   transition: all .25s ease-in-out;
-  /* border: 1px solid hsl(235, 21%, 11%); */
   padding: .5rem 1rem;
   border-radius: 16px; 
   background-color: hsl(235, 21%, 11%);
@@ -65,7 +59,6 @@ body:has(#dark) {
 }
 
 .loggedOut {
-  /* border: 1px solid yellow; */
   padding: 1rem;
   display: flex;
   gap: 1rem;
@@ -92,9 +85,7 @@ body:has(#dark) {
 }
 
 form {
-  /* border: 1px solid red; */
   position: relative;
-  /* top: 50%; */
   display: flex;
   justify-content: center;
 }
@@ -103,21 +94,17 @@ form {
   position: absolute;
   padding: 0 1rem;
   margin: 1rem;
-  /* border: 1px solid yellow; */
   top: -4rem;
-  /* background-color: hsl(235, 24%, 19%); */
   border-radius: 18px;
   color: hsl(0, 0%, 98%);
   min-width: 16rem;
   max-width: 28rem;
   background: transparent;
-  /* border: 2px solid hsl(0, 0%, 98%); */
   backdrop-filter: blur(20px);
   box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
 .formContent .formHeader {
-  /* border: 1px solid red; */
   font-weight: bold;
   font-size: 1.3rem;
   text-align: center;
@@ -125,16 +112,13 @@ form {
 }
 
 .formContent div {
-  /* border: 1px solid red; */
   height: 40px;
   margin: 1rem 0;
-  /* display: flex;
-  align-items: center; */
+  align-items: center; 
   position: relative;
 } 
 
 .formContent input {
-  /* all: unset; */
   border: 2px solid hsl(0, 0%, 98%);
   outline: none;
   box-sizing: border-box;
@@ -161,7 +145,6 @@ form {
 }
 
 .formContent button {
-  /* all: unset; */
   outline: none;
   border: none;
   background-color: hsl(0, 0%, 98%);
@@ -169,11 +152,9 @@ form {
   padding: .5rem 1.5rem;
   width: 100%;
   box-sizing: border-box;
-  /* text-align: center; */
   height: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   font-size: 1rem;
-  /* color: hsl(0, 0%, 98%); */
   color: hsl(235, 21%, 11%);
   font-weight: 600;
   display: flex;
@@ -198,12 +179,9 @@ form {
 }
 
 div.error {
-  /* padding: 10px; */
-  /* background: #ffefef; */
   border: 1px solid red;
   color: var(--error);
   border-radius: 4px;
-  /* margin: 20px 0; */
   text-align: center;
   display: flex;
   justify-content: center;
@@ -214,39 +192,21 @@ input.error {
   border: 1px solid red;
 }
 
-/* .listContainer {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  max-width: none;
-  width: max-content;
-  max-height: 50vh;
-  font-size: 1.3rem;
-} */
-
 .listContainer {
   position: relative;
-  /* left: 50%; */
   top: 50%;
-  /* transform: translate(-50%, -50%); */
   max-width: none;
-  /* width: 100%; */
-  /* max-height: 50vh; */
   font-size: 1.3rem;
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin: 0 1rem; */
 }
 
 .list {
   margin: 0 1rem;
   position: absolute;
   top: -4rem;
-  /* border: 1px solid red; */
   padding: 1rem 0;
 }
 
@@ -289,8 +249,6 @@ svg {
   position: relative;
   height: 30px;
   width: 30px;
-  /* border-radius: 50%; */
-  /* background-color: white; */
   animation: rotate 2s linear infinite;
 }
 
@@ -414,7 +372,6 @@ label input:checked + div {
 .orderRemind {
   color: hsl(233, 14%, 35%);
   margin-top: 2rem;
-  /* margin-bottom: 20rem; */
   text-align: center;
   font-weight: 700;
 }

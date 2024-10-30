@@ -13,7 +13,6 @@ export const useSignup = () => {
             headers: {'content-type': 'application/json'},
             body: JSON.stringify({userName, email, password})
         })
-        console.log( response)
         const json = await response.json()
         
         if (!response.ok) {

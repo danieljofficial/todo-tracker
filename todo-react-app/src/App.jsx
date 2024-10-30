@@ -14,7 +14,6 @@ function App() {
     const [theme, setTheme] = useState(true)
     const { logout } = useLogout()
     const { user } = useAuthContext()
-    console.log(user)
     const toggleTheme = () => {
         setTheme(!theme)
     }
