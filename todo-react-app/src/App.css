@@ -339,7 +339,7 @@ input[type = "checkbox"] {
 }
 
 .taskElement input:checked {
-  content: url(./assets/icon-check.svg);
+  content: url(../public/icon-check.svg);
   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: 1px solid transparent;
 }
