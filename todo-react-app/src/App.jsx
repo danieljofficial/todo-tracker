@@ -50,7 +50,7 @@ function App() {
                             <Link to='/'>TODO</Link>
                         </div>
                         <button className="toggleTheme" onClick={toggleTheme}>
-                            <img src={theme ? "../public/icon-sun.svg" : "../public/icon-moon.svg"} alt={theme ? "light-mode" : "dark-mode"} id='toggleLight' />
+                            <img src={theme ? "../icon-sun.svg" : "../icon-moon.svg"} alt={theme ? "light-mode" : "dark-mode"} id='toggleLight' />
                         </button> 
                     </section>      
                 </nav>

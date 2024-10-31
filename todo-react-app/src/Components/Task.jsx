@@ -64,7 +64,7 @@ const Task = ({ index, task, id}) => {
                 <input onPointerDown={e => e.stopPropagation} onChange={updateTask} checked={checked} disabled={isLoading}  type="checkbox" id={`Item${index + 1}`} className="taskInput"/>                   
                 <div {...attributes} {...listeners} className="taskText" >{task.taskText}</div>
                 <button disabled={isLoading} className="deleteButton" onClick={removeTask} >
-                    <img src="../public/icon-cross.svg" alt="" id="cross"/> 
+                    <img src="../icon-cross.svg" alt="" id="cross"/> 
                 </button> 
                 { isLoading && (
                     <svg>
