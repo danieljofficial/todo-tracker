@@ -46,7 +46,7 @@ function App() {
                         )}              
                     </div>    
                     <section>
-                       <div className="todo">
+                        <div className="todo">
                             <Link to='/'>TODO</Link>
                         </div>
                         <button className="toggleTheme" onClick={toggleTheme}>

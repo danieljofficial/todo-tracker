@@ -18,8 +18,7 @@ body:has(#dark) {
 
 .navbar {
   background-image: url(./assets/bg-mobile-dark.jpg);
-  background-size: cover;
-  
+  background-size: cover; 
   color: hsl(0, 0%, 98%);
   padding: 6rem .5rem;
 }
@@ -292,7 +291,7 @@ svg circle {
   border-radius: 12px;
 }
 
-ul label {
+ul .taskElement {
   color: hsl(236, 33%, 92%);
   font-weight: 700;
   display: flex;
@@ -339,17 +338,17 @@ input[type = "checkbox"] {
   outline: none;
 }
 
-label input:checked {
+.taskElement input:checked {
   content: url(./assets/icon-check.svg);
   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: 1px solid transparent;
 }
 
-label input + div {
+.taskElement input + div {
   margin-right: auto;
 }
 
-label input:checked + div {
+.taskElement input:checked + div {
   text-decoration: line-through;
   color: hsl(233, 14%, 35%);
 }
@@ -390,6 +389,42 @@ body:has(#light) {
   color: black;
 }
 
+#light .auth a, .auth div button {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(235, 21%, 11%);
+}
+
+#light .todo a {
+  color: hsl(235, 21%, 11%);
+}
+
+#light .formContent {
+  color: hsl(235, 21%, 11%);
+}
+
+#light .formContent input{
+  background-color: hsl(0, 0%, 98%);
+  border: 2px solid hsl(235, 21%, 11%);
+  color: hsl(235, 21%, 11%);
+}
+
+#light .formContent button {
+  background-color: hsl(235, 21%, 11%);
+  color: hsl(0, 0%, 98%);
+}
+
+#light .formFooter a {
+  color: hsl(235, 21%, 11%);
+}
+
+#light .formFooter a:hover {
+  color: blue;
+}
+
+#light svg circle {
+  stroke: hsl(233, 14%, 35%);
+}
+
 #light .createTodo {
   background-color: hsl(0, 0%, 98%);
 }
@@ -398,7 +433,7 @@ body:has(#light) {
   background-color: hsl(0, 0%, 98%);
 }
 
-#light ul label {
+#light ul .taskElement {
   color: hsl(235, 19%, 35%);
 }
 
@@ -422,6 +457,10 @@ body:has(#light) {
   .navbar {
     background-image: url(./assets/bg-desktop-dark.jpg);
   }
+
+  #light .navbar {
+    background-image: url(./assets/bg-desktop-light.jpg);
+  } 
 }
 
 @media (min-width: 1000px) {
@@ -433,10 +472,5 @@ body:has(#light) {
 
   .listContainer {
     max-height: 20vh;
-  }
-
-  /* Light mode */
-  #light .navbar {
-    background-image: url(./assets/bg-desktop-light.jpg);
   }
 }

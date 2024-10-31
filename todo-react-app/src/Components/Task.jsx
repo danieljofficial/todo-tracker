@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 import { TasksContext } from "../Context/TaskContext"
 import { useAuthContext } from "../Hooks/useAuthContext"
 
-const Task = ({ onTaskChecked, index, task, id}) => {
+const Task = ({ index, task, id}) => {
 
     const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id: task._id})
 
@@ -35,7 +35,9 @@ const Task = ({ onTaskChecked, index, task, id}) => {
         }
     }
 
+    const [checked, setChecked ] = useState(null)
     const updateTask = async () => {
+        console.log('task before:', task.isCompleted)
         if (!user) return
         setIsLoading(true)
         const updatedTask = {isCompleted: !task.isCompleted}
@@ -53,13 +55,14 @@ const Task = ({ onTaskChecked, index, task, id}) => {
         if (response.ok) {
             dispatch({type: 'UPDATE_TASK', payload: json})
             setIsLoading(false)
-        }
+            setChecked(json.isCompleted)
+        }       
+        
     }
- 
 
     return (
-            <label htmlFor={`Item${index + 1}`}  ref={setNodeRef} style={style} className="taskElement">  
-                <input disabled={isLoading} onChange={updateTask} type="checkbox" name="" id={`Item${index + 1}`} className="taskInput" checked={task.isCompleted}/>                   
+            <div ref={setNodeRef} style={style} className="taskElement">  
+                <input onPointerDown={e => e.stopPropagation} onChange={updateTask} checked={checked} disabled={isLoading}  type="checkbox" id={`Item${index + 1}`} className="taskInput"/>                   
                 <div {...attributes} {...listeners} className="taskText" >{task.taskText}</div>
                 <button disabled={isLoading} className="deleteButton" onClick={removeTask} >
                     <img src="../src/assets/icon-cross.svg" alt="" id="cross"/> 
@@ -69,7 +72,7 @@ const Task = ({ onTaskChecked, index, task, id}) => {
                         <circle cx="10" cy="10" r="10"></circle>
                     </svg>
                 )}                    
-            </label>    
+            </div>    
     )       
 }
 

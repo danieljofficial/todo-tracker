@@ -2,7 +2,6 @@ const Task = require('../models/taskModel')
 
 const mongoose = require('mongoose')
 
-// Get all tasks
 const getTasks = async (req, res) => {
     const user_id = req.user._id
     const tasks = await Task.find({ user_id })
@@ -38,7 +37,7 @@ const createTask = async (req, res) => {
         const task = await Task.create({ taskText, isCompleted, user_id })
         res.status(200).json(task)
     } catch {
-        res.status(400).json({error: 'Failed post request'})
+        res.status(400).json({error: 'Failed to create task!'})
     }
 }
 
@@ -49,7 +48,7 @@ const deleteTask = async (req, res) => {
         const task = await Task.deleteMany({ isCompleted: true })
 
         if (!task) {
-            return res.status(400).json({error: 'Failed to delete completed!'})
+            return res.status(400).json({error: 'Failed to delete completed tasks!'})
         }
  
         res.status(200).json(task)
@@ -69,22 +68,6 @@ const deleteTask = async (req, res) => {
     res.status(200).json(task)
 
 }
-
-// const deleteCompletedTasks = async (req, res) => {
-//     // const { id } = req.params
-
-//     // if(!mongoose.Types.ObjectId.isValid(id)) {
-//     //     return res.status(400).json({error: 'Invalid task id!'})
-//     // }
-
-//     const task = await Task.deleteMany({ isCompleted: true })
-
-//     if (!task) {
-//         return res.status(400).json({error: 'Failed to delete!'})
-//     }
- 
-//     res.status(200).json(task)
-// }
 
 const updateTask = async (req, res) => {
     const {id} = req.params
@@ -107,7 +90,6 @@ module.exports = {
     getActiveTasks, 
     createTask, 
     deleteTask, 
-    // deleteCompletedTasks, 
     updateTask
 }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import {DndContext, KeyboardSensor, PointerSensor, TouchSensor, closestCorners, useSensor, useSensors} from "@dnd-kit/core"
+import {DndContext, KeyboardSensor, MouseSensor, PointerSensor, TouchSensor, closestCorners, useSensor, useSensors} from "@dnd-kit/core"
 import {arrayMove, SortableContext, verticalListSortingStrategy, sortableKeyboardCoordinates} from "@dnd-kit/sortable"
 import {restrictToParentElement, restrictToVerticalAxis} from "@dnd-kit/modifiers"
 import { TasksContext } from "../Context/TaskContext";
@@ -8,8 +8,6 @@ import { useAuthContext } from "../Hooks/useAuthContext";
 
 
 function List() {   
-    const [filteredTasks, setFilteredTasks] = useState([])
-
     const {tasks, dispatch} = useContext(TasksContext)
 
     const [filter, setFilter] = useState({
@@ -84,7 +82,7 @@ function List() {
     }, [filter, user])
 
 
-    const [taskText, setTaskText] = useState()
+    const [taskText, setTaskText] = useState('')
     const [isLoading, setIsLoading] = useState(null)
     const addTask = async () => {
         if (!user) return
@@ -93,7 +91,6 @@ function List() {
         }
         
         setIsLoading(true)
-        // Watch for errors from below.
         const newTask = {taskText, isCompleted: false}
 
         const response = await fetch('api/tasks', {
@@ -116,6 +113,7 @@ function List() {
 
     const clearCompletedTasks = async () => {
         if (!user) return
+        setIsLoading(true)
         const response = await fetch('./api/tasks/completed', {
             method: 'DELETE', 
             headers: {
@@ -127,7 +125,9 @@ function List() {
     
             if (response.ok) {
                 dispatch({type: 'DELETE_COMPLETED_TASKS', payload: json})
-        }
+                setIsLoading(false)
+            }
+            
     } 
 
     const handleCompletedTasks = () => {
@@ -158,8 +158,7 @@ function List() {
     const handleDragEnd = (event) => {
         const {active, over} = event
         
-        if (active.id === over.id) {
-            dispatch({type: 'DND', payload: tasks})
+        if (active.id && !over) {
             return
         }
 
@@ -176,8 +175,18 @@ function List() {
     }
 
     const sensors = useSensors(
+        useSensor(MouseSensor, {
+            activationConstraint: {
+                distance: 8,
+            },
+        }),
         useSensor(PointerSensor),
-        useSensor(TouchSensor),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 200,
+                tolerance: 6,
+            },
+        }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         })
@@ -225,7 +234,7 @@ function List() {
                                 {user && tasks.length > 0 ?
                                     <div className="underBar">           
                                         <span className="itemsLeft">{tasks && tasks.length > 1 ? `${tasks.length} items left` : `${tasks.length} item left`}</span>
-                                        <button className="clear" onClick={clearCompletedTasks}>Clear completed</button>     
+                                        <button className="clear"  onClick={clearCompletedTasks}>Clear completed</button>     
                                     </div> : <div className="underBar">{user ? 'Nothing to see here yet...' : 'Log in to see tasks.' }</div>
                                 }
                             </ul>   
