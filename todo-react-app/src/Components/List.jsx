@@ -15,7 +15,7 @@ function List() {
         active: false,
         completed: false,
     })
-    const { user } = useAuthContext()
+    const { user, dispatch: userDispatch } = useAuthContext()
 
     useEffect(() => {
 
@@ -26,6 +26,11 @@ function List() {
                         'Authorization': `Bearer ${user.token}`
                     }
                 })
+
+                if(response.status === 401) {
+                    localStorage.removeItem("user")
+                    userDispatch({type: "LOGOUT"})
+                }
     
                 const json = await response.json() 
     
@@ -47,6 +52,11 @@ function List() {
                         'Authorization': `Bearer ${user.token}`
                     }
                 })
+
+                if(response.status === 401) {
+                    localStorage.removeItem("user")
+                    userDispatch({type: "LOGOUT"})
+                }
     
                 const json = await response.json() 
     
@@ -67,6 +77,11 @@ function List() {
                     'Authorization': `Bearer ${user.token}`
                 }
             })
+
+            if(response.status === 401) {
+                localStorage.removeItem("user")
+                userDispatch({type: "LOGOUT"})
+            }
 
             const json = await response.json() 
 
@@ -120,13 +135,18 @@ function List() {
                 'Authorization': `Bearer ${user.token}`
             }
         })
+
+        if(response.status === 401) {
+            localStorage.removeItem("user")
+            userDispatch({type: "LOGOUT"})
+        }
     
-            const json = await response.json()
-    
-            if (response.ok) {
-                dispatch({type: 'DELETE_COMPLETED_TASKS', payload: json})
-                setIsLoading(false)
-            }
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'DELETE_COMPLETED_TASKS', payload: json})
+            setIsLoading(false)
+        }
             
     } 
 

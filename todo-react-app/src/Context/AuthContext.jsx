@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
+import {jwrDecode} from "jwt-decode"
 
 export const AuthContext = createContext()
 
@@ -25,7 +26,16 @@ export const AuthContextProvider = ({ children}) => {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
         if (user) {
-            dispatch({type: 'LOGIN', payload: user})
+            const token = user.token
+            const decodedToken = jwtDecode(token)
+            const currentTime = Math.floor(Date.now() / 1000)
+            
+            if (decodedToken.exp > currentTime) {
+                dispatch({type: 'LOGIN', payload: user})
+            } else {
+                localStorage.removeItem("user")
+                dispatch({ type: "LOGOUT"})
+            }
         }
     }, [])
 

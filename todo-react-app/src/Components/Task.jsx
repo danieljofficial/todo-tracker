@@ -14,7 +14,7 @@ const Task = ({ index, task, id}) => {
         transform: CSS.Transform.toString(transform),
         transition,
     }
-    const { user } = useAuthContext()
+    const { user, dispatch: userDispatch } = useAuthContext()
     
     const [isLoading, setIsLoading] = useState()
     const removeTask = async () => {
@@ -26,6 +26,11 @@ const Task = ({ index, task, id}) => {
                 'Authorization': `Bearer ${user.token}`
             }
         })
+
+        if(response.status === 401) {
+            localStorage.removeItem("user")
+            userDispatch({type: "LOGOUT"})
+        }
 
         const json = await response.json()
 
@@ -49,6 +54,11 @@ const Task = ({ index, task, id}) => {
             'Authorization': `Bearer ${user.token}`
         }
         })
+
+        if(response.status === 401) {
+            localStorage.removeItem("user")
+            userDispatch({type: "LOGOUT"})
+        }
 
         const json = await response.json()
         if (response.ok) {
